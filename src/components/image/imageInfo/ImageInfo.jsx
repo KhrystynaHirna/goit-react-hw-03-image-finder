@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-// import PropTypes from "prop-types";
 import { ImagesService } from "../../api/Api";
 import { ImageGallery } from "../ImageGallery";
 import Modal from "../../modal/Modal";
 import { Button } from "../../button/Button";
+// import {Loader} from "../../loader/Loader"
 
 
 export default class ImageInfo extends Component {
@@ -56,16 +56,17 @@ export default class ImageInfo extends Component {
     }
     
     render() {
-        const { images, input, largeImageURL, isShown } = this.state;
+        const { page, enabled, images, input, largeImageURL, isShown } = this.state;
 
     return (
         <div>
-            {images && <ImageGallery images={images} alt={ input} onClick={this.openImage} />}
+            {/* {page === 1 && <Loader enabled={enabled} />} */}
+            {images && <ImageGallery images={images} alt={input} onClick={this.openImage} />}
+            {/* {page > 1 && <Loader enabled={enabled} />} */}
             {images && images.length > 0 && <Button onClick={this.handleBtnClick} />}
             {isShown && <Modal isShown={this.toggleModal} src={largeImageURL} alt={input} />}
 
         </div>
-        
     )
     }
     

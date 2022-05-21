@@ -3,9 +3,12 @@ import s from "./Button.module.css";
 
 export function Button({ onClick }) {
     return (
-        <button type="button" className={s.Button} onClick={onClick}>
+        <div className={s.Container}>
+            <button type="button" className={s.Button} onClick={onClick}>
             Load more
-        </button>
+           </button>
+        </div>
+        
     )
 };
 

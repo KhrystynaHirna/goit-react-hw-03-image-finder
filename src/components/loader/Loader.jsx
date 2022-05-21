@@ -1,4 +1,3 @@
-
 import PropTypes from "prop-types";
 import { SpinnerDiamond } from "spinners-react";
 import s from "./Loader.module.css";
