@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ImageGalleryItem } from "./imageGalleryItem/ImageGalleryItem";
+import { ImageItem } from "./imageItem/ImageItem";
 import s from "./ImageGallery.module.css";
 
 
@@ -11,8 +11,7 @@ export const ImageGallery = ({ images, alt, onClick }) => {
                 <ul className={s.ImageGallery}>
 
                     {images.map(({ id, webformatURL, largeImageURL }) => (
-                        <ImageGalleryItem
-                            // input={this.state.input}
+                        <ImageItem
                             key={id}
                             id={id}
                             webformatURL={webformatURL}
@@ -32,7 +31,7 @@ ImageGallery.propTypes = {
       webformatURL: PropTypes.string.isRequired,
       largeImageURL: PropTypes.string.isRequired,
     })
-  ),
-  onClick: PropTypes.func,
-  alt: PropTypes.string,
+  ).isRequired,
+  onClick: PropTypes.func.isRequired,
+  alt: PropTypes.string.isRequired,
 };

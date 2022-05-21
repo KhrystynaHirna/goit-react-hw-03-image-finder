@@ -10,7 +10,7 @@ class Searchbar extends Component {
     handleChange = e => {
         this.setState({ input: e.currentTarget.value.toLowerCase() })
     };
-    handleSubmit = e => {
+    handleFormSubmit = e => {
       e.preventDefault();
       if (this.state.input.trim() === "") {
         Notiflix.Notify.warning("Please enter something");
@@ -25,9 +25,9 @@ class Searchbar extends Component {
 
     return (
 <header className={s.Searchbar}>
-  <form className={s.SearchForm } onSubmit={this.handleSubmit}>
+  <form className={s.SearchForm } onSubmit={this.handleFormSubmit}>
     <button type="submit" className={s.SearchForm_button} >
-      <span className={s.SearchForm_button_label}>Search</span>
+      <span className={s.SearchForm_button__label}>Search</span>
     </button>
 
     <input

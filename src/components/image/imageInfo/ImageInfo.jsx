@@ -14,7 +14,7 @@ export default class ImageInfo extends Component {
 
     state = {
         input: "",
-        images: null,
+        images: [],
         largeImageURL: "",
         isShown: false,
         enabled: false,
@@ -23,7 +23,7 @@ export default class ImageInfo extends Component {
 
       componentDidUpdate(prevProps, prevState) {
         if (prevProps.input !== this.props.input) {
-            this.setState({ images: null, enabled: true });
+            this.setState({ images: [], enabled: true });
             ImagesService(this.props.input, this.state.page)
                 .then(images => {
                     this.setState({ images })
@@ -56,7 +56,7 @@ export default class ImageInfo extends Component {
     }
     
     render() {
-        const { page, enabled, images, input, largeImageURL, isShown } = this.state;
+        const { images, input, largeImageURL, isShown } = this.state;
 
     return (
         <div>
