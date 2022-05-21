@@ -39,7 +39,7 @@ export default class ImageInfo extends Component {
       }
     
    
-     handleBtnClick = () => {
+    handleBtnClick = () => {
         this.setState(prevState => ({
             page: prevState.page += 1,
         }))
@@ -50,6 +50,7 @@ export default class ImageInfo extends Component {
             isShown: !isShown,
         }))
     };
+    
     openImage = (largeImageURL) => {
         this.setState({ largeImageURL });
         this.toggleModal();

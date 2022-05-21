@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import s from "./Modal.module.css";
 
 
-// const modalRoot = document.querySelector('#modal-root');
-
 class Modal extends Component {
   
   componentDidMount() {
@@ -34,7 +32,6 @@ class Modal extends Component {
            <img src={src} alt={alt} />
          </div>
       </div>
-      // modalRoot
       )}    
 }
 
