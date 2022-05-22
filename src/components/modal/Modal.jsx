@@ -37,7 +37,7 @@ class Modal extends Component {
 
 Modal.propTypes = {
     isShown: PropTypes.func.isRequired,
-    largeImage: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
   };
 
