@@ -16,7 +16,7 @@ export const ImageItem = ({ id, webformatURL, largeImageURL, alt, onClick}) => {
 }
 
 ImageItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
   webformatURL: PropTypes.string.isRequired,
   largeImageURL: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
