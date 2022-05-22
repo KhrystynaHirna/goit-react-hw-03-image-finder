@@ -7,7 +7,6 @@ import s from "./ImageGallery.module.css";
 export const ImageGallery = ({ images, alt, onClick }) => {
 
         return (
-            <div>
                 <ul className={s.ImageGallery}>
 
                     {images.map(({ id, webformatURL, largeImageURL }) => (
@@ -19,8 +18,7 @@ export const ImageGallery = ({ images, alt, onClick }) => {
                             alt={alt}
                             onClick={onClick}
                         /> ))}          
-               </ul>
-           </div>      
+               </ul>    
         )   
 }
 

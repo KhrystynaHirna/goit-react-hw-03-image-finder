@@ -4,12 +4,12 @@ import s from "./Modal.module.css";
 
 
 class Modal extends Component {
-  
+
   componentDidMount() {
     window.addEventListener("keydown", this.onEscClick)
   };
 
-  componentWillUnmount = () => {
+  componentWillUnmount() {
     window.removeEventListener("keydown", this.onEscClick)
   };
   onEscClick = e => {
@@ -17,7 +17,7 @@ class Modal extends Component {
       this.props.isShown();
     }
   };
-  onBtnClick = e => {
+  onBgClick = e => {
     if (e.currentTarget === e.target) {
       this.props.isShown()
     }
@@ -27,18 +27,18 @@ class Modal extends Component {
     const { src, alt } = this.props;
 
     return (
-        <div className={s.Overlay} onClick={this.onBtnClick}>
+        <div className={s.Overlay} onClick={this.onBgClick}>
          <div className={s.Modal}>
-           <img src={src} alt={alt} />
+           <img className={s.Image} src={src} alt={alt} />
          </div>
       </div>
       )}    
 }
 
 Modal.propTypes = {
-    isShown: PropTypes.func,
-    src: PropTypes.string,
-    alt: PropTypes.string,
+    isShown: PropTypes.func.isRequired,
+    largeImage: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired,
   };
 
 export default Modal;
