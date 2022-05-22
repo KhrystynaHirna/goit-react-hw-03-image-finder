@@ -15,31 +15,32 @@ export default class ImageInfo extends Component {
 
     state = {
         input: "",
-        images: [],
+        images: null,
         largeImageURL: "",
         isShown: false,
         enabled: false,
         page: this.props.initialPage,
     }
 
-      componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) {
         if (prevProps.input !== this.props.input) {
-            this.setState({ images: [], enabled: true });
+            this.setState({ images: null, enabled: true });
             ImagesService(this.props.input, this.state.page)
                 .then(images => {
                     this.setState({ images })
-                }).finally(() => this.setState({ enabled: false }));  
-        }     
-          if (this.state.input === prevState.input && this.state.page !== prevState.page) {
-              this.setState({ enabled: true });
-              ImagesService(this.state.input, this.state.page)
-                  .then(images => {
-                      this.setState({ images: [...prevState.images, ...images] })
-                  }).finally(() => this.setState({ enabled: false }));
-          }
-      }
-    
+                }).finally(() => this.setState({ enabled: false }));
+        }
+        if (this.state.input === prevState.input && this.state.page !== prevState.page) {
+            this.setState({ enabled: true });
+            ImagesService(this.state.input, this.state.page)
+                .then(images => {
+                    this.setState({ images: [...prevState.images, ...images] })
+                }).finally(() => this.setState({ enabled: false }));
+        }       
+    }
    
+            
+    
     handleBtnClick = () => {
         this.setState(prevState => ({
             page: prevState.page + 1,

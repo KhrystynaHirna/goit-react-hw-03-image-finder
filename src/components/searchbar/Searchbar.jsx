@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import s from "./Searchbar.module.css";
 import Notiflix from "notiflix";
 
@@ -7,6 +8,7 @@ class Searchbar extends Component {
     state = {
         input: ""
     };
+  
     handleChange = e => {
         this.setState({ input: e.currentTarget.value.toLowerCase() })
     };
@@ -21,7 +23,8 @@ class Searchbar extends Component {
         this.setState({ input: "" });
     };
 
-    render() {
+  render() {
+    const { input } = this.state.input;
 
     return (
 <header className={s.Searchbar}>
@@ -37,13 +40,15 @@ class Searchbar extends Component {
       autoFocus
       placeholder="Search images and photos"
       onChange={this.handleChange}
-      value={this.state.input}
+      value={input}
     />
   </form>
 </header>   
-
-)}
-    
+)}   
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default Searchbar;
