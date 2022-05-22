@@ -1,15 +1,21 @@
+
 import PropTypes from "prop-types";
-import { SpinnerDiamond } from "spinners-react";
+import { SpinnerRoundOutlined } from 'spinners-react';
 import s from "./Loader.module.css";
 
 
-export function Loader({ enabled }) {
+function Loader({ enabled }) {
     return (
         <div className={s.Loader}>
-            <SpinnerDiamond enabled={enabled} />
+            <SpinnerRoundOutlined color="#3f51b5" enabled={enabled} />
         </div>
     )
 };
+
 Loader.propTypes = {
     enabled: PropTypes.bool.isRequired,
 };
+
+export default Loader;
+
+
