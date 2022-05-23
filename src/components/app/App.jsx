@@ -9,10 +9,10 @@ class App extends Component {
         input: "",
     }
 
-     handleFormSubmit = input => {
-        this.setState({ input });
+     handleFormSubmit = (input) => {
+        this.setState({ input, page: 1 });
      };
-   
+    
 
     render() {
         const { input } = this.state;
@@ -20,7 +20,7 @@ class App extends Component {
         return (
             <div className={s.App}>
                 <Searchbar onSubmit={this.handleFormSubmit}/>
-                <ImageInfo input={ input }/>                
+                <ImageInfo input={input} />  
             </div>
         )}
 }

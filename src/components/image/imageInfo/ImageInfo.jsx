@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { ImagesService } from "../../api/Api";
 import { ImageGallery } from "../ImageGallery";
-import Modal from "../../modal/Modal";
 import { Button } from "../../button/Button";
-import  Loader  from "../../loader/Loader";
-
+import Modal from "../../modal/Modal";
+import Loader from "../../loader/Loader";
 
 
 export default class ImageInfo extends Component {
@@ -36,23 +35,40 @@ export default class ImageInfo extends Component {
                 .then(images => {
                     this.setState({ images: [...prevState.images, ...images] })
                 }).finally(() => this.setState({ enabled: false }));
-        }       
+        }
     }
    
-            
+//     componentDidUpdate(prevProps, prevState) {
     
+//     if (this.state.title !== prevState.title) {
+//       this.setState({images: null, enabled: true});
+//       ImagesService(this.state.title, this.state.page)
+//         .then(images => {
+//           this.setState({ images })
+//         }).finally(() => this.setState({enabled: false}));
+//     } 
+    
+//      if (this.state.title === prevState.title && this.state.page !== prevState.page) {
+//       this.setState({enabled: true});
+//       ImagesService(this.state.title, this.state.page)
+//         .then(images => {
+//           this.setState({ images: [...prevState.images, ...images] });
+//           }).finally(() => this.setState({enabled: false}));
+//     }    
+//   }
+          
     handleBtnClick = () => {
-        this.setState(prevState => ({
-            page: prevState.page + 1,
-        }))
-    };
+        this.setState(state => ({
+            page: state.page + 1,
+        }),
+        )
+    };      
 
     toggleModal = () => {
         this.setState(({ isShown }) => ({
             isShown: !isShown,
         }))
-    };
-    
+    };    
     openImage = (largeImageURL) => {
         this.setState({ largeImageURL });
         this.toggleModal();
@@ -62,14 +78,14 @@ export default class ImageInfo extends Component {
         const { page, images, input, largeImageURL, isShown, enabled } = this.state;
 
     return (
-        <div>
+        <>
             {page === 1 && <Loader enabled={enabled} />}
             {images && <ImageGallery images={images} alt={input} onClick={this.openImage} />}
             {page > 1 && <Loader enabled={enabled} />}
             {images && images.length > 0 && <Button onClick={this.handleBtnClick} />}
             {isShown && <Modal isShown={this.toggleModal} src={largeImageURL} alt={input} />}
 
-        </div>
+        </>
     )
     }
     

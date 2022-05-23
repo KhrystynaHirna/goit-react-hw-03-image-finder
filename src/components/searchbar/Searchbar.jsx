@@ -6,7 +6,7 @@ import Notiflix from "notiflix";
 class Searchbar extends Component {
 
     state = {
-        input: ""
+        input: "",
     };
   
     handleChange = e => {
@@ -24,17 +24,18 @@ class Searchbar extends Component {
     };
 
   render() {
-    const { input } = this.state.input;
+    const { input } = this.state;
 
     return (
 <header className={s.Searchbar}>
   <form className={s.SearchForm } onSubmit={this.handleFormSubmit}>
-    <button type="submit" className={s.SearchForm_button} >
-      <span className={s.SearchForm_button__label}>Search</span>
+    <button type="submit" className={s.SearchFormButton} >
+      <span className={s.SearchFormButtonLabel}>Search</span>
     </button>
 
     <input
-      className={s.SearchForm_input}
+      className={s.SearchFormInput}
+      name="name"
       type="text"
       autoComplete="off"
       autoFocus
